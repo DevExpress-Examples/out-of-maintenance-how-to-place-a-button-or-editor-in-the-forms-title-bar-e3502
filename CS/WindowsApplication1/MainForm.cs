@@ -12,32 +12,16 @@ using DevExpress.XtraEditors;
 
 namespace WindowsApplication1
 {
-    public partial class MainForm : AdvancedXtraForm
+    public partial class MainForm : DevExpress.XtraBars.ToolbarForm.ToolbarForm
     {
         public MainForm()
         {
             InitializeComponent();
-            DevExpress.XtraBars.Ribbon.RibbonBarManager manager = TitleBarToolBar.Ribbon.Manager;
-            TitleBarToolBar.ItemLinks.Add(new BarButtonItem(manager, "Test"));
-            RepositoryItemTextEdit riTextEdit = new RepositoryItemTextEdit();
-            TitleBarToolBar.ItemLinks.Add(new BarEditItem(manager, riTextEdit));
-            riTextEdit.EditValueChanged += new EventHandler(riTextEdit_EditValueChanged);
-            RepositoryItemButtonEdit riButtonEdit = new RepositoryItemButtonEdit();
-            riButtonEdit.ButtonClick += riButtonEdit_ButtonClick;
-            riButtonEdit.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
-            riButtonEdit.Buttons[0].Caption = "Button";
-            riButtonEdit.Buttons[0].Kind = DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph;
-            TitleBarToolBar.ItemLinks.Add(new BarEditItem(manager, riButtonEdit));
         }
 
-        void riButtonEdit_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        private void barButtonItem2_ItemClick(object sender, ItemClickEventArgs e)
         {
             MessageBox.Show("Test");
-        }
-
-        void riTextEdit_EditValueChanged(object sender, EventArgs e)
-        {
-            Text = (sender as TextEdit).Text;
         }
     }
 }
